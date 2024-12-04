@@ -70,13 +70,13 @@ def assert_models_installed():
 
 def select_model():
     
-    model_names = [model["name"] for model in OLLAMA_MODELS]
+    model_names = [model["model"] for model in OLLAMA_MODELS]
     
     llm_name = st.sidebar.selectbox(f"Choose Agent (available {len(model_names)})", [""] + model_names)
     if llm_name:
 
         # llm details object
-        llm_details = [model for model in OLLAMA_MODELS if model["name"] == llm_name][0]
+        llm_details = [model for model in OLLAMA_MODELS if model["model"] == llm_name][0]
 
         # convert size in llm_details from bytes to GB (human-friendly display)
         if type(llm_details["size"]) != str:
